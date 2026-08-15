@@ -127,3 +127,16 @@ for name, clf in models_config.items():
     print(f"  Recall    : {rec:.4f}")
     print(f"  F1-Score  : {f1:.4f}")
     print(f"  MCC Score : {mcc:.4f}")
+
+
+    # Save model
+    safe_name = name.lower().replace(" ", "_")
+    model_data = {
+        "model": clf,
+        "scaler": scaler if needs_scaling else None,
+        "needs_scaling": needs_scaling,
+        "feature_names": list(data.feature_names),
+    }
+    with open(f"model/{safe_name}.pkl", "wb") as fp:
+        pickle.dump(model_data, fp)
+    print(f"  Saved: model/{safe_name}.pkl")
