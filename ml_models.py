@@ -30,3 +30,18 @@ from sklearn.metrics import (
 import warnings
 
 warnings.filterwarnings("ignore")
+
+
+# Load Dataset
+
+data = load_breast_cancer()
+X = pd.DataFrame(data.data, columns=data.feature_names)
+y = pd.Series(data.target, name="target")  # 0 = malignant, 1 = benign
+
+print("=" * 60)
+print("DATASET: Breast Cancer Wisconsin (Diagnostic)")
+print("=" * 60)
+print(f"Samples   : {X.shape[0]}")
+print(f"Features  : {X.shape[1]}")
+print(f"Classes   : {list(data.target_names)} (0=malignant, 1=benign)")
+print(f"Class dist: {dict(pd.Series(y).value_counts())}")
