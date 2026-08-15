@@ -92,3 +92,38 @@ for name, clf in models_config.items():
     needs_scaling = name in ["Logistic Regression", "kNN", "Naive Bayes Gaussian"]
     Xtr = X_train_sc if needs_scaling else X_train.values
     Xte = X_test_sc if needs_scaling else X_test.values
+
+
+    clf.fit(Xtr, y_train)
+    y_pred = clf.predict(Xte)
+    y_prob = (
+        clf.predict_proba(Xte)[:, 1]
+        if hasattr(clf, "predict_proba")
+        else y_pred.astype(float)
+    )
+
+    acc = accuracy_score(y_test, y_pred)
+    auc = roc_auc_score(y_test, y_prob)
+    prec = precision_score(y_test, y_pred, zero_division=0)
+    rec = recall_score(y_test, y_pred, zero_division=0)
+    f1 = f1_score(y_test, y_pred, zero_division=0)
+    mcc = matthews_corrcoef(y_test, y_pred)
+
+    results[name] = {
+        "Accuracy": acc,
+        "AUC": auc,
+        "Precision": prec,
+        "Recall": rec,
+        "F1": f1,
+        "MCC": mcc,
+        "needs_scaling": needs_scaling,
+        "y_test": y_test.values.tolist(),
+        "y_pred": y_pred.tolist(),
+    }
+
+    print(f"  Accuracy  : {acc:.4f}")
+    print(f"  AUC Score : {auc:.4f}")
+    print(f"  Precision : {prec:.4f}")
+    print(f"  Recall    : {rec:.4f}")
+    print(f"  F1-Score  : {f1:.4f}")
+    print(f"  MCC Score : {mcc:.4f}")
