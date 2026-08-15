@@ -140,3 +140,39 @@ for name, clf in models_config.items():
     with open(f"model/{safe_name}.pkl", "wb") as fp:
         pickle.dump(model_data, fp)
     print(f"  Saved: model/{safe_name}.pkl")
+
+
+# Comparison Table
+
+print("\n" + "=" * 60)
+print("COMPARISON TABLE")
+print("=" * 60)
+
+rows = []
+for name, r in results.items():
+    rows.append(
+        {
+            "ML Model": name,
+            "Accuracy": f"{r['Accuracy']:.4f}",
+            "AUC": f"{r['AUC']:.4f}",
+            "Precision": f"{r['Precision']:.4f}",
+            "Recall": f"{r['Recall']:.4f}",
+            "F1": f"{r['F1']:.4f}",
+            "MCC": f"{r['MCC']:.4f}",
+        }
+    )
+
+cmp_df = pd.DataFrame(rows).set_index("ML Model")
+print(cmp_df.to_string())
+
+# Save results summary
+with open("model/results_summary.pkl", "wb") as fp:
+    pickle.dump(results, fp)
+print("\nresults_summary.pkl saved.")
+
+# Also save scaler globally
+with open("model/scaler.pkl", "wb") as fp:
+    pickle.dump({"scaler": scaler, "feature_names": list(data.feature_names)}, fp)
+print("scaler.pkl saved.")
+
+print("\n All models trained and saved successfully.")
