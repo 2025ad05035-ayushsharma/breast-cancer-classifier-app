@@ -71,7 +71,12 @@ print("test_data.csv saved.")
 models_config = {
     "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42),
     "Decision Tree": DecisionTreeClassifier(max_depth=8, random_state=42),
- 
+    "kNN": KNeighborsClassifier(n_neighbors=7),
+    "Naive Bayes Gaussian": GaussianNB(),
+    "Naive Bayes Multinomial": MultinomialNB(alpha=1.0, fit_prior=True),
+    "Random Forest": RandomForestClassifier(
+        n_estimators=100, random_state=42, n_jobs=-1
+    ),
 }
 
 
