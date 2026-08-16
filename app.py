@@ -1,5 +1,5 @@
 """
-ML Assignment 2 — Streamlit Web Application
+ML Assignment 2 - Streamlit Web Application
 Student: Ayush Sharma | BITS ID: 2025AD05035
 Dataset: Breast Cancer Wisconsin (Diagnostic)
 Models: Logistic Regression, Decision Tree, kNN, Naive Bayes Gaussian, Naive Bayes Multinomial, Random Forest
@@ -23,7 +23,7 @@ from sklearn.metrics import (
 # ─────────────────────────────────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title="ML Assignment 2 — Cancer Classification",
+    page_title="ML Assignment 2 - Cancer Classification",
     layout="wide"
 )
 
@@ -31,11 +31,11 @@ st.set_page_config(
 # Header
 # ─────────────────────────────────────────────────────────────────────────────
 
-st.title("Breast Cancer Classification — ML Assignment 2")
+st.title("Breast Cancer Classification - ML Assignment 2")
 st.markdown(
     "**Student:** Ayush Sharma &nbsp;|&nbsp; "
     "**BITS ID:** 2025AD05035 &nbsp;|&nbsp; "
-    "**M.Tech AIML — BITS Pilani WILP**"
+    "**M.Tech AIML - BITS Pilani WILP**"
 )
 st.markdown("---")
 
@@ -68,7 +68,7 @@ if not models:
     st.stop()
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Sidebar — Configuration
+# Sidebar - Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 
 st.sidebar.header("Configuration")
@@ -94,7 +94,7 @@ st.sidebar.markdown(
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Main — CSV Upload
+# Main - CSV Upload
 # ─────────────────────────────────────────────────────────────────────────────
 
 st.header("1. Upload Test Data (CSV)")
@@ -111,13 +111,13 @@ if uploaded is None:
     st.warning("No file uploaded. Using bundled test_data.csv for demo.")
     if os.path.exists("test_data.csv"):
         df = pd.read_csv("test_data.csv")
-        st.success(f"Loaded test_data.csv — {len(df)} rows, {df.shape[1]} columns.")
+        st.success(f"Loaded test_data.csv - {len(df)} rows, {df.shape[1]} columns.")
     else:
         st.error("test_data.csv not found. Please run ml_models.py first.")
         st.stop()
 else:
     df = pd.read_csv(uploaded)
-    st.success(f"Uploaded file — {len(df)} rows, {df.shape[1]} columns.")
+    st.success(f"Uploaded file - {len(df)} rows, {df.shape[1]} columns.")
 
 # Preview
 with st.expander("Preview uploaded data (first 5 rows)"):
@@ -201,7 +201,7 @@ if has_target and results_rows:
     st.success(f"Overall Winner (by Accuracy): **{best_model}**")
 
 elif not has_target:
-    st.info("No `target` column found — showing predictions only.")
+    st.info("No `target` column found - showing predictions only.")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Predictions Table
@@ -266,7 +266,7 @@ if has_target and results_rows:
     mdf = metrics_df[['Accuracy', 'AUC', 'Precision', 'Recall', 'F1', 'MCC']]
     fig, ax = plt.subplots(figsize=(10, 5))
     mdf.T.plot(kind='bar', ax=ax, colormap='Set2', edgecolor='white')
-    ax.set_title('Model Comparison — All Metrics', fontsize=13, fontweight='bold')
+    ax.set_title('Model Comparison - All Metrics', fontsize=13, fontweight='bold')
     ax.set_xlabel('Metric')
     ax.set_ylabel('Score')
     ax.set_ylim(0, 1.05)
@@ -283,6 +283,6 @@ if has_target and results_rows:
 
 st.markdown("---")
 st.markdown(
-    "**M.Tech AIML — BITS Pilani WILP** | Machine Learning Assignment 2 | "
+    "**M.Tech AIML - BITS Pilani WILP** | Machine Learning Assignment 2 | "
     "Ayush Sharma (2025AD05035) | Aug 2026"
 )
