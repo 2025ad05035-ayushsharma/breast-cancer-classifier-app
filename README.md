@@ -5,6 +5,8 @@ A Streamlit-powered web app that classifies breast tumors as benign or malignant
 **Student:** Ayush Sharma | **BITS ID:** 2025AD05035  
 **Course:** Machine Learning | M.Tech AIML : BITS Pilani WILP  
 
+## LIVE Link to deployed app on Streamlit Community Cloud
+**LINK:** [https://2025ad05035-ayushsharma-breast-cancer-classifier-app-app-q4hnka.streamlit.app/](https://2025ad05035-ayushsharma-breast-cancer-classifier-app-app-q4hnka.streamlit.app/)
 
 ---
 
@@ -40,8 +42,7 @@ Design and implement a multi-model machine learning classification pipeline that
 
 > **[https://github.com/2025ad05035-ayushsharma/breast-cancer-classifier-app](https://github.com/2025ad05035-ayushsharma/breast-cancer-classifier-app)**
 
-## d. LIVE Link to deployed app on Streamlit Community Cloud
-**LINK:** [LINK](PLACEHOLDER-TEXT)
+
 
 ---
 
